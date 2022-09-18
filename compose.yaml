@@ -1,0 +1,17 @@
+version: '3'
+services:
+  app:
+    container_name: limarka-render-app
+    image: dolphiq/php81-composer-npm:latest
+    command: bash -c "composer install && vendor/bin/jigsaw serve --port=8080"
+    working_dir: /var/www/html
+    volumes:
+      - '.:/var/www/html'
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-server
+    ports:
+      - "8000:80"
+    volumes:
+      - ./build_local:/var/www
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
