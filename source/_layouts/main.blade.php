@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="{{ $page->language ?? 'en' }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="canonical" href="{{ $page->getUrl() }}">
-        <meta name="description" content="{{ $page->description }}">
-        <title>{{ $page->title }}</title>
-        <link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">
-        <script defer src="{{ mix('js/main.js', 'assets/build') }}"></script>
-    </head>
-    <body class="text-gray-900 font-sans antialiased">
-        @yield('body')
+<html lang="{{ $page->language ?? 'pt_BR' }}" class="scroll-smooth">
+    @include('_components.head', ['page' => $page])
+    <body class="bg-white text-black antialiased dark:bg-gray-900 dark:text-white">
+        <div class="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
+            <div class="flex h-screen flex-col justify-between">
+                @include('_components.header', ['page' => $page])
+                @yield('body')
+                @include('_components.footer', ['page' => $page])
+            </div>
+        </div>
+
+        @include('_components.source-github')
     </body>
 </html>
