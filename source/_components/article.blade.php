@@ -16,18 +16,30 @@
                     {{ $page->limarka['instituicao'] }}
                 </h1>
             </div>
+            <div class="mt-5" style="margin-top: 50px">
+                @foreach($page->files as $file)
+                    @if($file['type'] == 'application/pdf')
+                    <button onclick="location.href = '{{ url($file['path']) }}';"
+                            class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                        Visualizar PDF
+                    </button>
+                    @endif
+                @endforeach
+            </div>
         </div>
     </header>
     <div class="divide-y divide-gray-200 pb-8 dark:divide-gray-700 xl:divide-y-0" style="grid-template-rows: auto 1fr;">
         <div class="divide-y divide-gray-200 dark:divide-gray-700 xl:col-span-3 xl:row-span-2 xl:pb-0">
             <div class="prose max-w-none pt-10 pb-8 dark:prose-dark">
+                @foreach($page['page_files'] as $file)
+                    @include($file)
+                @endforeach
                 <h2 id="overview">
                     <a href="#overview" aria-hidden="true" tabindex="-1"><span class="icon icon-link"></span></a>
-                    Visão geral
+                    Informações em geral
                 </h2>
-                <p>Veja algumas informações importantes antes de ler este artigo:</p>
+                <p>Veja algumas informações importantes sobre o artigo:</p>
                 @include('_components.table-info', ['page' => $page])
-
                 <h2 id="download">
                     <a href="#download" aria-hidden="true" tabindex="-1"><span class="icon icon-link"></span></a>
                     Arquivos disponíveis para download
@@ -45,21 +57,21 @@
                     </thead>
                     <tbody>
                     @foreach($page->files as $file)
-                    <tr>
-                        <td>
-                            <a href="{{ url($file['path']) }}">{{ $file['file_name'] }}</a>
-                        </td>
-                        <td>{{ $file['size'] }}</td>
-                        <td>{{ $file['type'] }}</td>
-                        <td>
-                            <button
-                                    onclick="location.href = '{{ url($file['path']) }}';"
-                                    type="submit"
-                                    class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                                Ver/Abrir
-                            </button>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                <a href="{{ url($file['path']) }}">{{ $file['file_name'] }}</a>
+                            </td>
+                            <td>{{ $file['size'] }}</td>
+                            <td>{{ $file['type'] }}</td>
+                            <td>
+                                <button
+                                        onclick="location.href = '{{ url($file['path']) }}';"
+                                        type="submit"
+                                        class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                    Ver/Abrir
+                                </button>
+                            </td>
+                        </tr>
                     @endforeach
                     </tbody>
                 </table>

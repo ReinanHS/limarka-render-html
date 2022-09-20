@@ -1,9 +1,15 @@
 <?php
 
-class App
+namespace App\Listeners\helper;
+
+use Exception;
+
+class AppHelper
 {
-    public const CONFIG_LIMARKA_PATH = __DIR__ . '/configuracao.yaml';
-    public const FILES_PATH = __DIR__ . '/source/assets/files';
+    private const BASE_DIR = __DIR__ . '/../..';
+    public const CONFIG_LIMARKA_PATH = self::BASE_DIR . '/configuracao.yaml';
+    public const FILES_PATH = self::BASE_DIR . '/source/assets/files';
+    public const PAGE_FILES_PATH = self::BASE_DIR . '/source/_pages';
 
     public function loadConfigYaml(): array
     {
@@ -44,9 +50,31 @@ class App
         return $data;
     }
 
+    public function getPageFilesList(): array
+    {
+        $data = [];
+        $files = scandir(self::PAGE_FILES_PATH);
+        $fileInSafeList = [
+            'md', 'markdown'
+        ];
+
+        foreach ($files as $file) {
+            $filePath = self::PAGE_FILES_PATH . '/' . $file;
+            $path_parts = pathinfo($filePath);
+
+            if (!in_array($path_parts['extension'], $fileInSafeList)) {
+                continue;
+            }
+
+            $data[] = '_pages.' . $path_parts["filename"];
+        }
+
+        return $data;
+    }
+
     public function getVersion(): string
     {
-        $content = file_get_contents(__DIR__ . '/VERSION');
+        $content = file_get_contents(self::BASE_DIR . '/VERSION');
         $version = trim($content);
         return explode(PHP_EOL, $version)[0];
     }

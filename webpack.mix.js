@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const tailwindcss = require('tailwindcss');
 require('laravel-mix-jigsaw');
 
 mix.disableSuccessNotifications();
@@ -14,6 +15,7 @@ mix.jigsaw()
     .js('source/_assets/js/main.js', 'js')
     .sass('source/_assets/css/main.scss', 'css')
     .options({
-        processCssUrls: false,
+        processCssUrls: true,
+        postCss: [ tailwindcss('./tailwind.config.js') ],
     })
     .version();

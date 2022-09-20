@@ -1,5 +1,6 @@
 <?php
 
+use App\Listeners\helper\AppHelper;
 use TightenCo\Jigsaw\Jigsaw;
 
 /** @var $container \Illuminate\Container\Container */
@@ -17,11 +18,17 @@ use TightenCo\Jigsaw\Jigsaw;
  */
 
 $events->beforeBuild(function (Jigsaw $jigsaw) {
-    $app = new App();
+    $app = new AppHelper();
 
     $jigsaw->setConfig('version', $app->getVersion());
     $jigsaw->setConfig('files', $app->getBuildFilesList());
+    $jigsaw->setConfig('page_files', $app->getPageFilesList());
     $jigsaw->setConfig('limarka', $app->loadConfigYaml());
 
     $jigsaw->setConfig('title', $jigsaw->getConfig('limarka')['title']);
+});
+
+$events->afterBuild(function (Jigsaw $jigsaw) {
+    $buildPath = "build_" . $jigsaw->getEnvironment();
+    shell_exec("mv $buildPath/assets/build/fonts $buildPath/fonts");
 });

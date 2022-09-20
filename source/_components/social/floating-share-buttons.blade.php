@@ -1,27 +1,31 @@
 <ul id="floating-share-buttons">
     <li><a href="#" class="share-facebook">
-            <i class="fa-solid fa-user"></i>
+            <i class="fa-brands fa-facebook-f"></i>
         </a>
     </li>
     <li>
         <a href="#" class="share-pinterest">
-            <i class="fa fa-pinterest fa-2x" aria-hidden="true"></i>
+            <i class="fa-brands fa-pinterest"></i>
         </a>
     </li>
     <li>
-        <a href="#" class="share-twitter"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
+        <a href="#" class="share-twitter">
+            <i class="fa-brands fa-twitter"></i>
         </a>
     </li>
     <li>
-        <a href="#" class="share-linkedin"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i>
+        <a href="#" class="share-linkedin">
+            <i class="fa-brands fa-linkedin"></i>
         </a>
     </li>
     <li>
-        <a href="#" class="share-whatsapp"><i class="fa fa-whatsapp fa-2x" aria-hidden="true"></i>
+        <a href="#" class="share-whatsapp">
+            <i class="fa-brands fa-whatsapp"></i>
         </a>
     </li>
     <li>
-        <a href="#" class="share-mail"><i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
+        <a href="#" class="share-mail">
+            <i class="fa-solid fa-envelope"></i>
         </a>
     </li>
 </ul>
