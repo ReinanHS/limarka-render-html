@@ -25,7 +25,6 @@
 
     @include('_components.schema_DCTERMS', ['page' => $page])
 
-    <link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">
-    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-    <script defer src="{{ mix('js/main.js', 'assets/build') }}"></script>
+    <link rel="stylesheet" href="{{ url(mix('css/main.css', 'assets/build')) }}">
+    <script defer src="{{ url(mix('js/main.js', 'assets/build')) }}"></script>
 </head>

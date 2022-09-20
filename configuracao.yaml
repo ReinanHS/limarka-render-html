@@ -51,7 +51,5 @@ lista_tabelas: false
 page_render:
   published_time: '2022-06-28T18:26:24-03:00'
   abstract: ''
-  github_user: 'reinanhs'
-  github_repository: 'reinanhs/limarka-template-tcc'
   instituicao_website: 'https://www.ifs.edu.br/'
 ---

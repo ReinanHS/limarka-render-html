@@ -2,7 +2,7 @@
     <div class="container mx-auto px-4">
         <div class="flex flex-wrap text-left lg:text-left">
             <div class="w-full lg:w-6/12 px-4">
-                <h4 class="text-3xl fonat-semibold text-blueGray-700">Agradecimentos</h4>
+                <h4 class="text-3xl fonat-semibold text-blueGray-700">Agradecimentos</h4><br>
                 <h5 class="text-lg mt-0 mb-2 text-blueGray-600">
                     Obrigado por ler este trabalho de conclusão de curso. Caso tenha alguma sugestão ou dúvida, entre em
                     contato conosco através das redes sociais abaixo:
@@ -56,8 +56,10 @@
             <div class="w-full md:w-4/12 px-4 mx-auto text-center">
                 <div class="text-sm text-blueGray-500 font-semibold py-1">
                     Copyright © <span id="get-current-year">{{ \Illuminate\Support\Carbon::now()->format('Y') }}</span>
-                    <a href="https://github.com/{{ $page->limarka['page_render']['github_user'] }}"
-                       class="text-blueGray-500 hover:text-blueGray-800">{{ $page->limarka['page_render']['github_user'] }}</a>
+                    <a href="https://github.com/{{ $page['github.user'] }}"
+                       class="text-blueGray-500 hover:text-blueGray-800">{{ $page['github.user'] }}</a><br>
+                    Feito com <a
+                            href="https://github.com/ReinanHS/limarka-template-tcc">Limarka-render-html</a> {{ $page->version }}
                 </div>
             </div>
         </div>

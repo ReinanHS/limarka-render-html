@@ -1,0 +1,105 @@
+/* --- Floating Share Buttons --- */
+/* Icons/Logos from FontAwesome4*/
+
+#floating-share-buttons {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+}
+
+#floating-share-buttons li {
+
+}
+
+#floating-share-buttons a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+#floating-share-buttons a.share-facebook {
+  background-color: #395793;
+}
+
+#floating-share-buttons a.share-pinterest {
+  background-color: #b8171c;
+}
+
+#floating-share-buttons a.share-twitter {
+  background-color: #1c9deb;
+}
+
+#floating-share-buttons a.share-linkedin {
+  background-color: #21577e;
+}
+
+#floating-share-buttons a.share-whatsapp {
+  background-color: #48a91f;
+}
+
+#floating-share-buttons a.share-mail {
+  background-color: #333;
+}
+
+/*
+  Breakpoint is 1024px. You change this value to adapt it to your design
+*/
+
+/* Desktop */
+@media (min-width: 1023px) {
+  ul#floating-share-buttons {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    min-height: 100px;
+    padding: 0px;
+  }
+
+  ul#floating-share-buttons a {
+    width: 3rem;
+    height: 3rem;
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    transition: width 0.5s;
+  }
+
+  ul#floating-share-buttons a:hover {
+    width: 4.5rem;
+  }
+
+  #floating-share-buttons a.share-whatsapp {
+    display: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 1024px) {
+  footer {
+    padding-bottom: 4rem;
+  }
+
+  #floating-share-buttons {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  #floating-share-buttons li {
+    display: inline-block;
+    width: calc(100% / 6);
+    padding: 0;
+    margin: 0;
+  }
+
+  #floating-share-buttons li a {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 3rem;
+    width: 100%;
+  }
+}

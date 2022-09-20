@@ -13,11 +13,10 @@
     <div class="flex items-center text-base leading-5">
         <div class="hidden sm:block">
             <a class="p-1 font-medium text-gray-900 dark:text-gray-100 sm:p-4"
-               href="https://github.com/{{ $page->limarka['page_render']['github_user'] }}" target="_blank">Código</a>
+               href="https://github.com/{{ $page['github.repository'] }}" target="_blank">Código</a>
             <a class="p-1 font-medium text-gray-900 dark:text-gray-100 sm:p-4"
-               href="https://github.com/{{ $page->limarka['page_render']['github_repository'] }}"
+               href="https://github.com/{{ $page['github.user'] }}"
                target="_blank">Autor</a>
-
         </div>
 {{--        <button aria-label="Toggle Dark Mode" type="button" class="ml-1 mr-1 h-8 w-8 rounded p-1 sm:ml-4" id="btnDarkMode">--}}
 {{--            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"--}}

@@ -11,6 +11,13 @@
         "laravel-mix-jigsaw": "^2.0.0",
         "postcss": "^8.4.14",
         "postcss-import": "^14.0.0",
+        "resolve-url-loader": "^5.0.0",
+        "sass": "^1.54.9",
+        "sass-loader": "^12.6.0",
         "tailwindcss": "^3.1.6"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.2.0",
+        "autoprefixer": "10.4.5"
     }
 }

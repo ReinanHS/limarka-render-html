@@ -15,3 +15,13 @@ use TightenCo\Jigsaw\Jigsaw;
  *     // Your code here
  * });
  */
+
+$events->beforeBuild(function (Jigsaw $jigsaw) {
+    $app = new App();
+
+    $jigsaw->setConfig('version', $app->getVersion());
+    $jigsaw->setConfig('files', $app->getBuildFilesList());
+    $jigsaw->setConfig('limarka', $app->loadConfigYaml());
+
+    $jigsaw->setConfig('title', $jigsaw->getConfig('limarka')['title']);
+});

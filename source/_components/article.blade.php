@@ -47,13 +47,13 @@
                     @foreach($page->files as $file)
                     <tr>
                         <td>
-                            <a href="{{ url($file['link']) }}">{{ $file['arquivo'] }}</a>
+                            <a href="{{ url($file['path']) }}">{{ $file['file_name'] }}</a>
                         </td>
-                        <td>{{ $file['tamanho'] }}</td>
-                        <td>{{ $file['tipo'] }}</td>
+                        <td>{{ $file['size'] }}</td>
+                        <td>{{ $file['type'] }}</td>
                         <td>
                             <button
-                                    onclick="location.href = '{{ url($file['link']) }}';"
+                                    onclick="location.href = '{{ url($file['path']) }}';"
                                     type="submit"
                                     class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                                 Ver/Abrir
@@ -69,7 +69,7 @@
                     Discussões em geral
                 </h2>
                 <script src="https://giscus.app/client.js"
-                        data-repo="ReinanHS/limarka-template-tcc"
+                        data-repo="{{ $page['github.repository'] }}"
                         data-repo-id="R_kgDOIBAsGw"
                         data-category-id="DIC_kwDOIBAsG84CRgIc"
                         data-mapping="specific"
