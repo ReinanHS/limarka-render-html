@@ -1,10 +1,11 @@
 FROM reinanhs/php81-composer-npm
+
 WORKDIR /var/www/html
 
-COPY composer.json composer.lock ./
+COPY . ./
+
 RUN composer install
+RUN npm install --force
 
-COPY *.php configuracao.yaml ./
-COPY source ./source
-
-CMD vendor/bin/jigsaw build
+RUN chmod -R 777 "/var/www/html"
+RUN npm run prod

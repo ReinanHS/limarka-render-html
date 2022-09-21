@@ -1,4 +1,7 @@
-/build_local
+/build_*
 /nginx
 /node_modules
-source/assets/files/*
+/vendor
+/source/_pages/*
+/source/assets/build/*
+/source/assets/files/*

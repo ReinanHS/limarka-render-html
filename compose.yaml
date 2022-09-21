@@ -3,7 +3,8 @@ services:
   app:
     container_name: limarka-render-app
     image: reinanhs/php81-composer-npm
-    command: bash -c "composer install && vendor/bin/jigsaw serve --port=8080"
+    tty: true
+    command: "/bin/bash"
     working_dir: /var/www/html
     environment:
       APP_BASE_URL: '/'
@@ -12,6 +13,18 @@ services:
       GITHUB_REPOSITORY: 'reinanhs/limarka-render-html'
     volumes:
       - '.:/var/www/html'
+  app-test:
+    container_name: limarka-render-test
+    image: reinanhs/limarka-render-html:0.0.2
+    tty: true
+    command: "/bin/bash"
+    environment:
+      APP_BASE_URL: '/'
+      APP_LANGUAGE: 'pt_BR'
+      GITHUB_REPOSITORY_OWNER: 'reinanhs'
+      GITHUB_REPOSITORY: 'reinanhs/limarka-render-html'
+    volumes:
+      - './build_local:/var/www/html/build_local'
   nginx:
     image: nginx:alpine
     container_name: nginx-server
