@@ -71,4 +71,11 @@ page_render:
     github: reinanhs
   pages_render:
     - abstract.md
+  files_type:
+    - pdf
+    - tex
+    - bib
+  files_map:
+    - "xxx-trabalho-academico.tex:trabalho-academico.tex"
+    - "xxx-referencias.bib:referencias.bib"
 ---

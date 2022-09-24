@@ -59,7 +59,9 @@
                     @foreach($page->files as $file)
                         <tr>
                             <td>
-                                <a href="{{ url($file['path']) }}">{{ $file['file_name'] }}</a>
+                                <a href="{{ url($file['path']) }}">
+                                    {{ \Illuminate\Support\Str::limit($file['file_name'], 50) }}
+                                </a>
                             </td>
                             <td>{{ $file['size'] }}</td>
                             <td>{{ $file['type'] }}</td>

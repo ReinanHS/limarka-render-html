@@ -3,7 +3,7 @@
 namespace App\Listeners\helper;
 
 use Exception;
-use TightenCo\Jigsaw\IterableObject;
+use Illuminate\Support\Str;
 
 class AppHelper
 {
@@ -24,14 +24,28 @@ class AppHelper
         return yaml_parse($contentData) ?: [];
     }
 
-    public function getBuildFilesList(): array
+    public function getLinkFileArray(array $files, string $title): array
+    {
+        $linkData = [];
+        foreach ($files as $file) {
+            $itens = explode(':', $file);
+
+            if (isset($itens[0]) && isset($itens[1])) {
+                $linkData[$itens[0]] = $itens[1];
+            }
+        }
+
+        if (!isset($linkData['xxx-trabalho-academico.pdf'])) {
+            $linkData['xxx-trabalho-academico.pdf'] = Str::slug($title) . '.pdf';
+        }
+
+        return $linkData;
+    }
+
+    public function getBuildFilesList(array $fileInSafeList, array $filesMap): array
     {
         $data = [];
         $files = scandir(self::FILES_PATH);
-        $fileInSafeList = [
-            'pdf', 'tex', 'bib'
-        ];
-
         foreach ($files as $file) {
             $filePath = self::FILES_PATH . '/' . $file;
             $path_parts = pathinfo($filePath);
@@ -40,9 +54,13 @@ class AppHelper
                 continue;
             }
 
+            $fileBasename = in_array($path_parts["basename"], array_keys($filesMap))
+                ? $filesMap[$path_parts["basename"]]
+                : $path_parts["basename"];
+
             $data[] = [
-                'file_name' => $path_parts["basename"],
-                'path' => 'assets/files/' . $path_parts["basename"],
+                'file_name' => $fileBasename,
+                'path' => 'assets/files/' . $fileBasename,
                 'size' => $this->convertFromBytes(filesize($filePath)),
                 'type' => mime_content_type($filePath),
             ];
@@ -82,7 +100,7 @@ class AppHelper
 
         foreach ($files as $file) {
             $filePath = self::PAGE_FILES_PATH . '/' . $file;
-            if(!file_exists($filePath)){
+            if (!file_exists($filePath)) {
                 continue;
             }
 

@@ -22,7 +22,7 @@ services:
       APP_BASE_URL: '/'
       APP_LANGUAGE: 'pt_BR'
       GITHUB_REPOSITORY_OWNER: 'reinanhs'
-      GITHUB_REPOSITORY: 'reinanhs/limarka-render-html'
+      GITHUB_REPOSITORY: 'limarka-render-html'
     volumes:
       - './build_test:/var/www/html/build_local'
   nginx:

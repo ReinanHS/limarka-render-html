@@ -22,11 +22,18 @@ use TightenCo\Jigsaw\Jigsaw;
 
 $events->beforeBuild(function (Jigsaw $jigsaw) {
     $app = new AppHelper();
+    $config = $app->loadConfigYaml();
+
+    $filesMap = $config['page_render']['files_map'] ?? [];
+    $filesMap = $app->getLinkFileArray($filesMap, $config['title']);
+    $jigsaw->setConfig('files_map', $filesMap);
+
+    $jigsaw->setConfig('files', $app->getBuildFilesList(
+        fileInSafeList: $config['page_render']['files_type'] ?? [],
+        filesMap: $filesMap,
+    ));
 
     $jigsaw->setConfig('version', $app->getVersion());
-    $jigsaw->setConfig('files', $app->getBuildFilesList());
-
-    $config = $app->loadConfigYaml();
     $jigsaw->setConfig('limarka', $config);
     $jigsaw->setConfig('title', $config['title']);
     $jigsaw->setConfig('description', Str::limit($config['resumo'], 110));
@@ -36,7 +43,7 @@ $events->beforeBuild(function (Jigsaw $jigsaw) {
 });
 
 $events->afterBuild(function (Jigsaw $jigsaw) {
-    $buildPath = __DIR__ . "/build_" . $jigsaw->getEnvironment();
+    $buildPath = $jigsaw->getDestinationPath();
 
     if (is_dir("$buildPath/assets/build/fonts")) {
         shell_exec("mv $buildPath/assets/build/fonts $buildPath/fonts");
@@ -44,5 +51,14 @@ $events->afterBuild(function (Jigsaw $jigsaw) {
 
     if (file_exists("$buildPath/assets/favicon/favicon.ico")) {
         shell_exec("cp $buildPath/assets/favicon/favicon.ico $buildPath/");
+    }
+
+    foreach ($jigsaw->getConfig('files_map') as $file => $link){
+        $filePath = "$buildPath/assets/files/$file";
+        $linkPath = "$buildPath/assets/files/$link";
+
+        if(file_exists($filePath)){
+            shell_exec("mv $filePath $linkPath");
+        }
     }
 });
