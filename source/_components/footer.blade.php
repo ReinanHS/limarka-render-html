@@ -2,25 +2,52 @@
     <div class="container mx-auto px-4">
         <div class="flex flex-wrap text-left lg:text-left">
             <div class="w-full lg:w-6/12 px-4">
-                <h4 class="text-3xl fonat-semibold text-blueGray-700">Agradecimentos</h4><br>
+                <h4 class="text-3xl fonat-semibold text-blueGray-700">Informações</h4><br>
                 <h5 class="text-lg mt-0 mb-2 text-blueGray-600">
-                    Obrigado por ler este trabalho de conclusão de curso. Caso tenha alguma sugestão ou dúvida, entre em
-                    contato conosco através das redes sociais abaixo:
+                    Essa página foi gerada automaticamente pelo Limarka-render-html. Essa ferramenta é responsável por complicar textos escritos em Markdown e gerar artigos acadêmicos.
+                    Além disso, fornece uma página web com o conteúdo gerado. Para mais informações, visite esta <a
+                            href="https://github.com/ReinanHS/limarka-template-tcc">página</a>.
                 </h5>
                 <div class="mt-6 lg:mb-0 mb-6">
-                    <button class="bg-white text-lightBlue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                            type="button">
-                        <i class="fab fa-twitter"></i></button>
-                    <button class="bg-white text-lightBlue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                            type="button">
-                        <i class="fab fa-facebook-square"></i></button>
-                    <button class="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                            type="button">
-                        <i class="fab fa-dribbble"></i></button>
-                    <button class="bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                            type="button">
-                        <i class="fab fa-github"></i>
-                    </button>
+                    @if($page->limarka['page_render']['social_networks']['twitter'])
+                        <a
+                                href="https://www.twitter.com/{{ $page->limarka['page_render']['social_networks']['twitter'] }}"
+                                target="_blank"
+                                class="bg-white text-lightBlue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
+                                type="button">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    @endif
+
+                    @if($page->limarka['page_render']['social_networks']['facebook'])
+                        <a
+                                href="https://www.facebook.com/{{ $page->limarka['page_render']['social_networks']['facebook'] }}"
+                                target="_blank"
+                                class="bg-white text-lightBlue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
+                                type="button">
+                            <i class="fab fa-facebook-square"></i>
+                        </a>
+                    @endif
+
+                    @if($page->limarka['page_render']['social_networks']['instagram'])
+                        <a
+                                href="https://www.instagram.com/{{ $page->limarka['page_render']['social_networks']['instagram'] }}"
+                                target="_blank"
+                                class="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
+                                type="button">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    @endif
+
+                    @if($page->limarka['page_render']['social_networks']['github'])
+                        <a
+                                href="https://www.github.com/{{ $page->limarka['page_render']['social_networks']['github'] }}"
+                                target="_blank"
+                                class="bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
+                                type="button">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    @endif
                 </div>
             </div>
             <div class="w-full lg:w-6/12 px-4">

@@ -81,7 +81,7 @@
                     Discussões em geral
                 </h2>
                 <script src="https://giscus.app/client.js"
-                        data-repo="{{ $page['github.repository'] }}"
+                        data-repo="{{ $page['github.repository_full'] }}"
                         data-repo-id="R_kgDOIBAsGw"
                         data-category-id="DIC_kwDOIBAsG84CRgIc"
                         data-mapping="specific"

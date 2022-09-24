@@ -14,7 +14,7 @@
 
 <meta name="DC.identifier" content="{{ $page->getUrl() }}" scheme="DCTERMS.URI" />
 <meta name="DC.description" content="TCC (graduação) - {{ $page->limarka['instituicao'] }}. {{ $page->limarka['programa'] }}. {{ $page->limarka['area_de_concentracao'] }}" xml:lang="{{ $page->language }}" />
-<meta name="DCTERMS.abstract" content="{{ $page->limarka['page_render']['abstract'] }}" xml:lang="{{ $page->language }}" />
+<meta name="DCTERMS.abstract" content="{{ $page->limarka['abstract_texto'] }}" xml:lang="{{ $page->language }}" />
 <meta name="DCTERMS.extent" content="46" xml:lang="{{ $page->language }}" />
 <meta name="DC.language" content="{{ $page->language }}" xml:lang="{{ $page->language }}" scheme="DCTERMS.RFC1766" />
 <meta name="DC.publisher" content="{{ $page->limarka['local'] }}" xml:lang="{{ $page->language }}" />

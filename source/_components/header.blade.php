@@ -1,6 +1,6 @@
 <header class="flex items-center justify-between py-10">
     <div>
-        <a aria-label="TailwindBlog" href="{{ $page->getUrl() }}">
+        <a aria-label="TailwindBlog" href="https://github.com/ReinanHS/limarka-render-html">
             <div class="flex items-center justify-between">
                 <div class="mr-3">
                     <img class="github-logo-dark" src="{{ url('assets/images/GitHub-Mark-64px.png') }}" alt="Github Logo" width="64px">
@@ -13,7 +13,7 @@
     <div class="flex items-center text-base leading-5">
         <div class="hidden sm:block">
             <a class="p-1 font-medium text-gray-900 dark:text-gray-100 sm:p-4"
-               href="https://github.com/{{ $page['github.repository'] }}" target="_blank">Código</a>
+               href="https://github.com/{{ $page['github.repository_full'] }}" target="_blank">Código</a>
             <a class="p-1 font-medium text-gray-900 dark:text-gray-100 sm:p-4"
                href="https://github.com/{{ $page['github.user'] }}"
                target="_blank">Autor</a>

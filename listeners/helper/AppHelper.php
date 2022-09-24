@@ -3,6 +3,7 @@
 namespace App\Listeners\helper;
 
 use Exception;
+use TightenCo\Jigsaw\IterableObject;
 
 class AppHelper
 {
@@ -56,6 +57,27 @@ class AppHelper
         $files = scandir(self::PAGE_FILES_PATH);
         $fileInSafeList = [
             'md', 'markdown'
+        ];
+
+        foreach ($files as $file) {
+            $filePath = self::PAGE_FILES_PATH . '/' . $file;
+            $path_parts = pathinfo($filePath);
+
+            if (!in_array($path_parts['extension'], $fileInSafeList)) {
+                continue;
+            }
+
+            $data[] = '_pages.' . $path_parts["filename"];
+        }
+
+        return $data;
+    }
+
+    public function getPageFilesListFromConfig(IterableObject $files): array
+    {
+        $data = [];
+        $fileInSafeList = [
+            'md', 'markdown',
         ];
 
         foreach ($files as $file) {

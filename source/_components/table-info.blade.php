@@ -40,7 +40,7 @@
         <tr>
             <td class="metadataFieldLabel">Abstract:&nbsp;</td>
             <td class="metadataFieldValue">
-                {{ $page->limarka['page_render']['abstract'] }}
+                {{ $page->limarka['abstract_texto'] }}
             </td>
         </tr>
         <tr>

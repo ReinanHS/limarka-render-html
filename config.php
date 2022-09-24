@@ -8,4 +8,5 @@ return [
     'description' => getenv('APP_DESCRIPTION') ?: 'Esse site é responsável por armazenar um arquivo de TCC',
     'github.user' => getenv('GITHUB_REPOSITORY_OWNER'),
     'github.repository' => getenv('GITHUB_REPOSITORY'),
+    'github.repository_full' => getenv('GITHUB_REPOSITORY_OWNER') . '/' . getenv('GITHUB_REPOSITORY'),
 ];
