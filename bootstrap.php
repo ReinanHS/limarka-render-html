@@ -25,15 +25,14 @@ $events->beforeBuild(function (Jigsaw $jigsaw) {
 
     $jigsaw->setConfig('version', $app->getVersion());
     $jigsaw->setConfig('files', $app->getBuildFilesList());
-    $jigsaw->setConfig('limarka', $app->loadConfigYaml());
 
-    $pagesRender =  $jigsaw->getConfig('limarka')['page_render']['pages_render'];
+    $config = $app->loadConfigYaml();
+    $jigsaw->setConfig('limarka', $config);
+    $jigsaw->setConfig('title', $config['title']);
+    $jigsaw->setConfig('description', Str::limit($config['resumo'], 110));
     $jigsaw->setConfig('page_files', $app->getPageFilesListFromConfig(
-        files: $pagesRender,
+        files: $config['page_render']['pages_render'] ?: [],
     ));
-
-    $jigsaw->setConfig('title', $jigsaw->getConfig('limarka')['title']);
-    $jigsaw->setConfig('description', Str::limit($jigsaw->getConfig('limarka')['resumo'], 110));
 });
 
 $events->afterBuild(function (Jigsaw $jigsaw) {

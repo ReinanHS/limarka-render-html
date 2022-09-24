@@ -73,7 +73,7 @@ class AppHelper
         return $data;
     }
 
-    public function getPageFilesListFromConfig(IterableObject $files): array
+    public function getPageFilesListFromConfig(array $files): array
     {
         $data = [];
         $fileInSafeList = [
@@ -82,6 +82,10 @@ class AppHelper
 
         foreach ($files as $file) {
             $filePath = self::PAGE_FILES_PATH . '/' . $file;
+            if(!file_exists($filePath)){
+                continue;
+            }
+
             $path_parts = pathinfo($filePath);
 
             if (!in_array($path_parts['extension'], $fileInSafeList)) {

@@ -15,7 +15,7 @@ services:
       - '.:/var/www/html'
   app-test:
     container_name: limarka-render-test
-    image: reinanhs/limarka-render-html:0.0.2
+    image: reinanhs/limarka-render-html:latest
     tty: true
     command: "/bin/bash"
     environment:
