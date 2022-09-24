@@ -36,7 +36,7 @@ $events->beforeBuild(function (Jigsaw $jigsaw) {
 });
 
 $events->afterBuild(function (Jigsaw $jigsaw) {
-    $buildPath = "build_" . $jigsaw->getEnvironment();
+    $buildPath = __DIR__ . "/build_" . $jigsaw->getEnvironment();
 
     if (is_dir("$buildPath/assets/build/fonts")) {
         shell_exec("mv $buildPath/assets/build/fonts $buildPath/fonts");
