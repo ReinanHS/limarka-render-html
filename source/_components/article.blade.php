@@ -13,7 +13,7 @@
             </dl>
             <div>
                 <h1 class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
-                    {{ $page->limarka['instituicao'] }}
+                    {{ $page->limarka['title'] }}
                 </h1>
             </div>
             <div class="mt-5" style="margin-top: 50px">

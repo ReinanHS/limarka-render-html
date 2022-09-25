@@ -1,6 +1,7 @@
 <?php
 
 use App\Listeners\helper\AppHelper;
+use App\Listeners\helper\RenderConfigHelper;
 use Illuminate\Container\Container;
 use Illuminate\Support\Str;
 use TightenCo\Jigsaw\Events\EventBus;
@@ -23,6 +24,7 @@ use TightenCo\Jigsaw\Jigsaw;
 $events->beforeBuild(function (Jigsaw $jigsaw) {
     $app = new AppHelper();
     $config = $app->loadConfigYaml();
+    $config = RenderConfigHelper::getInstance()->configParse($config);
 
     $filesMap = $config['page_render']['files_map'] ?? [];
     $filesMap = $app->getLinkFileArray($filesMap, $config['title']);
